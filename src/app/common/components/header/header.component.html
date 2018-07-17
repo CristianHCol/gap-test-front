@@ -1,0 +1,23 @@
+<div layout="row">
+  <div flex="95" layout="column">
+  </div>
+  <div flex="5" layout="column">
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <td-menu>
+        <div td-menu-header class="mat-subhead">{{user.name}}</div>
+        <mat-nav-list dense>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="exitApp()">
+            <mat-icon mat-list-avatar>exit_to_app</mat-icon>
+            <h4 mat-line>
+              <span class="text-wrap">Salir</span>
+            </h4>
+            <p mat-line>Cerrar sección</p>
+          </a>
+        </mat-nav-list>
+      </td-menu>
+    </mat-menu>
+  </div>
+</div>

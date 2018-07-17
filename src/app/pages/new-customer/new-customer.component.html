@@ -1,0 +1,25 @@
+<td-layout-nav class="body--background">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <img src="../../../assets/icons/logo.svg" class="logo--size logo-top">
+    <app-header style="width: 100%"></app-header>
+  </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="80">
+      <div layout="column" layout-padding layout-align="center center" class="card--title--font primary--title" flex>
+        Nuevo Usuario
+      </div>
+      <div layout="column">
+        <div flex-gt-sm="10">
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div flex-gt-sm="90">
+        <div layout="column">
+        </div>
+      </div>
+    </div>
+  </div>
+  <td-layout-footer class="footer--container">
+    <app-footer></app-footer>
+  </td-layout-footer>
+</td-layout-nav>

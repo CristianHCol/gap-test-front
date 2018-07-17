@@ -1,0 +1,57 @@
+<td-layout-nav class="body--background">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <img src="../../../assets/icons/logo.svg" class="logo--size logo-top">
+    <app-header style="width: 100%"></app-header>
+  </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="60">
+      <mat-card class="padding--top">
+        <mat-card-title class="card--title--font">Polizas</mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-nav-list class="will-load item-list">
+          <ng-template tdLoading="policies.load">
+            <ng-template let-item let-last="last" ngFor [ngForOf]="policiesList">
+              <mat-list-item layout-align="row">
+                <mat-icon mat-list-avatar>assessment</mat-icon>
+                <h3 mat-line> {{item.name}} </h3>
+                <p>Valor de la poliza:</p> {{item.ammount}}
+                <p class="button--detail__textColor" (click)="showDetail(item, 1)">detalle</p>
+              </mat-list-item>
+              <mat-divider *ngIf="!last" mat-inset></mat-divider>
+           </ng-template>
+           <span *ngIf="policiesList?.length <= 0">No hay polizas creadas</span>
+         </ng-template>
+       </mat-nav-list>
+       <mat-card-actions>
+          <button mat-button (click)="addNewPolicy()">Crear Poliza</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div flex-gt-sm="60">
+        <mat-card class="top--separator">
+          <mat-card-title class="card--title--font">Clientes</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-nav-list class="will-load item-list">
+            <ng-template tdLoading="customer.load">
+              <ng-template let-item let-last="last" ngFor [ngForOf]="customerList">
+                <mat-list-item layout-align="row">
+                  <mat-icon mat-list-avatar>assessment</mat-icon>
+                  <h3 mat-line> {{item.name}} {{item.lastName}} </h3>
+                  <p>Numero de identificacion:</p> {{item.identification}}
+                  <p class="button--detail__textColor" (click)="showDetail(item, 2)">detalle</p>
+                </mat-list-item>
+                <mat-divider *ngIf="!last" mat-inset></mat-divider>
+             </ng-template>
+             <span *ngIf="customerList?.length <= 0">No hay clientes creados</span>
+           </ng-template>
+         </mat-nav-list>
+         <mat-card-actions>
+            <button mat-button (click)="addNewCustomer()">Crear Cliente</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+  </div>
+  <td-layout-footer class="footer--container">
+    <app-footer></app-footer>
+  </td-layout-footer>
+</td-layout-nav>

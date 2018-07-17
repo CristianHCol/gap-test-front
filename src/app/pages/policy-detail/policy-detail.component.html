@@ -1,0 +1,48 @@
+<td-layout-nav class="body--background">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <img src="../../../assets/icons/logo.svg" class="logo--size logo-top">
+    <app-header style="width: 100%"></app-header>
+  </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="60">
+      <mat-card *ngIf="item" class="mat-card--shadow--full padding--top">
+        <mat-card-title class="card--title--font">Detalle de la poliza
+          <span *ngIf="item">Poliza > {{item.id}}</span>
+        </mat-card-title>
+        <mat-card-subtitle>Fecha de comienzo de la poliza: {{item.startDay}}</mat-card-subtitle>
+        <div layout="row" layout-padding class="item--first--padding">
+          <div flex="40">
+            <span>Nombre: </span><span class="card--header--title">{{item.name}}</span>
+          </div>
+          <div flex="40">
+              <span>Descripcion: </span><span class="card--header--title">{{item.description}}</span>
+            </div>
+          <div flex="40">
+            <span>Valor de la poliza: </span><span class="card--header--title">{{item.ammount}}</span>
+          </div>
+          <div flex></div>
+        </div>
+        <div layout="row" layout-padding class="item--medium--padding">
+          <div flex="40">
+            <span>Dias de cubrimiento: </span><span class="card--header--title">{{item.coveragePeriod}}</span>
+          </div>
+          <div flex>
+          </div>
+        </div>
+        <div layout="row" layout-padding>
+          <div flex>
+          </div>
+          <div flex class="padding--top">
+            <button flex mat-raised-button color="primary" class="button--font button--border" (click)="update()">Actualizar</button>
+            <button flex mat-raised-button color="accent" class="button--font button--border" (click)="delete()">Eliminar</button>
+          </div>
+          <div flex>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <td-layout-footer class="footer--container">
+    <app-footer></app-footer>
+  </td-layout-footer>
+</td-layout-nav>

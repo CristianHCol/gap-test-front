@@ -1,0 +1,21 @@
+:host /deep/ {
+    mat-divider {
+        display: block;
+        border-top-style: solid;
+        border-top-width: 1px;
+    }
+
+    .card{
+        max-width: 670px;
+        margin-left: 30%;
+    }
+
+    .example-header-image {
+        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+        background-size: cover;
+      }
+
+      .login--container{
+        height: 400px;
+      }
+}

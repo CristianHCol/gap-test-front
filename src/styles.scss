@@ -1,1 +1,224 @@
 /* You can add global styles to this file, and also import other style files */
+@import './theme.scss';
+
+.will-load {
+    min-height: 80px;
+  }
+
+// Href line height wasn't right for mat-icon-button
+a[mat-icon-button] {
+  line-height: 36px;
+}
+
+// Capitalize
+.text-capital {
+  text-transform: capitalize;
+}
+
+.row--separator {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+// Lighter font weight in sub-toolbars
+td-layout-manage-list .mat-toolbar {
+  font-weight: 400;
+}
+
+.mat-toolbar{
+  min-height: 0px !important;
+  height: 50px !important;
+}
+
+.mat-toolbar-row {
+  height: 50px !important;
+}
+
+mat-form-field span{
+  margin-left: 0.5em;
+}
+
+mat-form-field{
+  display: inherit !important;
+  position: relative !important;
+  text-align: left !important;
+}
+
+mat-toolbar img{
+  position: relative;
+  left: 2em;
+}
+.mat-button.mat-accent, .mat-icon-button.mat-accent {
+    color: #a3c444 !important;
+}
+
+
+.geometry--picture{
+  margin-top: 3em;
+}
+
+.button--detail__textColor{
+  color: $primary_no_mat;
+}
+
+.body--background{
+  background: white;
+}
+
+.card--list__bg{
+  background: white !important;
+}
+
+.item--first--padding{
+  padding-bottom: 0px !important;
+}
+
+.item--medium--padding{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.item--last--padding{
+  padding-top: 0px !important;
+}
+
+.primary--title{
+  font-size: 1.5em;
+}
+
+.card--header--title{
+  color:rgba(0, 0, 0, 0.54);
+}
+
+.list--item--text{
+  font-size: 0.9em;
+  text-align:left;
+}
+
+.header--title--nocard{
+  background: $primary_no_mat;
+  font-family: HELVETICA !important;
+  text-align: center;
+}
+
+.header--subtitle--nocard{
+  background: #808080;
+  color:white;
+  font-family: HELVETICA !important;
+  margin-bottom: 0em !important;
+}
+
+.icons--subtitle--nocard{
+  background: $primary_no_mat;
+  margin-top: 0.5em;
+}
+
+.text--center{
+  text-align: center;
+}
+
+.link{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.graphic--horizontal{
+  height: 17em !important;
+  width: 40em !important;
+  margin: auto !important;
+}
+
+.graphic--round{
+  //height: 10em !important;
+  //width: 10em !important;
+  margin: auto !important;
+}
+
+.graphic--horizontal__reports {
+    //height: 17em !important;
+    //width: 30em !important;
+    margin: auto !important;
+}
+
+.graphic--round__reports {
+    //height: 13em !important;
+    //width: 13em !important;
+    margin: auto !important;
+}
+
+.graphic--polar {
+  display: block;
+  //width: 30em !important;
+  //height: 30em !important;
+  margin: auto !important;
+}
+
+.margin--graphic__top{
+  margin-top: 2em;
+}
+
+.margin--graphic--title{
+  margin-left: 2em !important;
+}
+
+.margin--card--content{
+  margin-left: 2em;
+}
+
+.margin--label__botton{
+  margin-bottom: 1.8em;
+}
+
+.header--table{
+  background: #808080;
+  color:white;
+  font-family: HELVETICA !important;
+  margin-bottom: 0em !important;
+  height: 3em;
+  text-align: center;
+  padding-top: 1em;
+}
+
+.row--table{
+  font-family: HELVETICA !important;
+  margin-bottom: 0em !important;
+  height: 6em;
+  padding-top: 1em;
+}
+
+.row--table__doble{
+  font-family: HELVETICA !important;
+  margin-bottom: 0em !important;
+  height: 5.9em;
+  padding-top: 1.8em;
+}
+
+.table--border_rigth{
+  border-right: solid 0.1px rgba(0, 0, 0, 0.12) !important;
+}
+
+.horizontal.large-filled-symbols[_nghost-c23] ul.steps-indicator[_ngcontent-c23] li.current[_ngcontent-c23]:after {
+  background: #a3c444 !important;
+  color: white !important;
+}
+
+.horizontal.large-filled-symbols[_nghost-c23] ul.steps-indicator[_ngcontent-c23] li.done[_ngcontent-c23]:after {
+  color: white !important;
+  background: #4D4D4D !important;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.scroll{
+  overflow: scroll;
+}
+
+.logo--size{
+  width: 3em;
+  height: 3em;
+}
+
+.logo-top{
+  top: 25px;
+}

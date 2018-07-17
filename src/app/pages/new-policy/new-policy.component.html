@@ -1,0 +1,162 @@
+<td-layout-nav class="body--background">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <img src="../../../assets/icons/logo.svg" class="logo--size logo-top">
+    <app-header style="width: 100%"></app-header>
+  </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="80">
+      <div layout="column" layout-padding layout-align="center center" class="card--title--font primary--title" flex>
+        {{isUpdating ? 'Actualizar Poliza' : 'Nueva poliza'}}
+      </div>
+      <div layout="column">
+        <div flex-gt-sm="10">
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+          <div flex-gt-sm="60">
+            <mat-card class="top--separator">
+                <mat-card-title class="card--title--font">Ingrese los datos</mat-card-title>
+                <mat-divider></mat-divider>
+                <form #form="ngForm">
+                      <mat-form-field>
+                        <input #namePolicy #namePolicyControl="ngModel" matInput name="policyName" placeholder="Ingrese el Nombre de la poliza" [(ngModel)]="policyDTO.Name"
+                        required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                        <mat-hint align="start">
+                            <span [hidden]="!namePolicyControl.errors?.required || namePolicyControl.pristine" class="tc-red-600">Required</span>
+                        </mat-hint>
+                      </mat-form-field>
+                    
+                      <mat-form-field>
+                        <input #desctiptionPolicy #descriptionPolicyControl="ngModel" name="policyDescription"  matInput placeholder="Ingrese la Descripcion de la poliza" [(ngModel)]="policyDTO.Description"
+                        required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                        <mat-hint align="start">
+                            <span [hidden]="!descriptionPolicyControl.errors?.required || descriptionPolicyControl.pristine" class="tc-red-600">Required</span>
+                        </mat-hint>
+                      </mat-form-field>
+                    
+                      <mat-form-field>
+                        <mat-select [(ngModel)]="coverageType" [ngModelOptions]="{standalone: true}" placeholder="Seleccione el cubrimiento">
+                          <ng-template let-item let-last="last" ngFor [ngForOf]="coverages">
+                            <mat-option  [value]="item" >{{item.description}}</mat-option>
+                          </ng-template>
+                        </mat-select>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                        <input matInput [(ngModel)]="policyDTO.StartDay" [matDatepicker]="picker" name="startDate" placeholder="Seleccione el dia de comienzo de la poliza" (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                        <input #daysPolicy #daysPolicyControl="ngModel" matInput type="number" name="daysPolicy" placeholder="Ingrese los dias de cubrimiento de la poliza" [(ngModel)]="policyDTO.CoveragePeriod"
+                        required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                        <mat-hint align="start">
+                            <span [hidden]="!daysPolicyControl.errors?.required || daysPolicyControl.pristine" class="tc-red-600">Required</span>
+                        </mat-hint>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                          <input #ammountPolicy #ammountControl="ngModel" matInput type="number" name="ammount" placeholder="Seleccione valor de la poliza" [(ngModel)]="policyDTO.Ammount"
+                          required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                          <mat-hint align="start">
+                              <span [hidden]="!ammountControl.errors?.required || ammountControl.pristine" class="tc-red-600">Required</span>
+                          </mat-hint>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                          <mat-select [(ngModel)]="risk" [ngModelOptions]="{standalone: true}" placeholder="Seleccione el riesgo de la poliza">
+                            <ng-template let-item let-last="last" ngFor [ngForOf]="riskList">
+                              <mat-option [value]="item" >{{item.description}}</mat-option>
+                            </ng-template>
+                          </mat-select>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                          <mat-select [(ngModel)]="agency" [ngModelOptions]="{standalone: true}" placeholder="Seleccione la agencia de venta de la poliza">
+                            <ng-template let-item let-last="last" ngFor [ngForOf]="agencyList">
+                              <mat-option [value]="item" >{{item.name}}</mat-option>
+                            </ng-template>
+                          </mat-select>
+                      </mat-form-field>
+      
+                      <mat-form-field>
+                          <input #userId #userIdControl="ngModel" (blur)="findUser()" ngModel matInput name="userId" type="number" placeholder="Ingrese el numero de identificacion del usuario" [(ngModel)]="customerDTO.identification"
+                          required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                          <mat-hint align="start">
+                              <span [hidden]="!userIdControl.errors?.required || userIdControl.pristine" class="tc-red-600">Required</span>
+                          </mat-hint>
+                      </mat-form-field>
+      
+                      <div *ngIf="notUserFound">
+                          <mat-form-field>
+                              <input #userName #userNameControl="ngModel" placeholder="Ingrese el nombre de usuario" name="nameuser" ngModel matInput [(ngModel)]="customerDTO.Name"
+                              required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                              <mat-hint align="start">
+                                  <span [hidden]="!userNameControl.errors?.required || userNameControl.pristine" class="tc-red-600">Required</span>
+                              </mat-hint>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <input #userLastName #userLastNameControl="ngModel" placeholder="Ingrese el Apellido del usuario" name="lastName" ngModel matInput [(ngModel)]="customerDTO.LastName"
+                              required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                              <mat-hint align="start">
+                                  <span [hidden]="!userLastNameControl.errors?.required || userLastNameControl.pristine" class="tc-red-600">Required</span>
+                              </mat-hint>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <mat-select [(ngModel)]="customerDTO.identificationType" [ngModelOptions]="{standalone: true}" placeholder="Seleccione el tipo de identificacion">
+                                <ng-template let-item let-last="last" ngFor [ngForOf]="ideTypes">
+                                  <mat-option [value]="item.name">{{item.name}}</mat-option>
+                                </ng-template>
+                              </mat-select>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <mat-select [(ngModel)]="customerDTO.Gender" [ngModelOptions]="{standalone: true}" placeholder="Seleccione el genero">
+                                <ng-template let-item let-last="last" ngFor [ngForOf]="genders">
+                                  <mat-option  [value]="item.name" >{{item.name}}</mat-option>
+                                </ng-template>
+                              </mat-select>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <input #userAge #userAgeControl="ngModel" type="number" name="age" placeholder="Ingrese la edad del usuario" ngModel matInput [(ngModel)]="customerDTO.Age"
+                              required maxlength="2" (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                              <mat-hint align="start">
+                                  <span [hidden]="!userAgeControl.errors?.required || userAgeControl.pristine" class="tc-red-600">Required</span>
+                              </mat-hint>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <mat-select [(ngModel)]="customerDTO.MaritalStatus" [ngModelOptions]="{standalone: true}" placeholder="Seleccione el estado civil">
+                                <ng-template let-item let-last="last" ngFor [ngForOf]="maritalStatus">
+                                  <mat-option  [value]="item.name" >{{item.name}}</mat-option>
+                                </ng-template>
+                              </mat-select>
+                          </mat-form-field>
+      
+                          <mat-form-field>
+                              <input #userCellPhone #userCellPhoneControl="ngModel" name="cell" type="number" placeholder="Ingrese numero de celular" ngModel matInput [(ngModel)]="customerDTO.CellPhone"
+                              required (autocomplete)="nope" disable-ignore-autocomplete-off autocomplete="off">
+                              <mat-hint align="start">
+                                  <span [hidden]="!userCellPhoneControl.errors?.required || userCellPhoneControl.pristine" class="tc-red-600">Required</span>
+                              </mat-hint>
+                          </mat-form-field>
+                    </div>
+                    <mat-card-actions>
+                        <button flex mat-raised-button color="primary" (click)="create(form)" class="button--font" *ngIf="!isUpdating">Crear Poliza</button>
+                        <button flex mat-raised-button color="primary" (click)="update(form)" class="button--font" *ngIf="isUpdating">Actualizar Poliza</button>
+                      </mat-card-actions>
+                </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <td-layout-footer class="footer--container">
+    <app-footer></app-footer>
+  </td-layout-footer>
+</td-layout-nav>

@@ -1,0 +1,47 @@
+
+<div class="container" fxLayout="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxFlex="1%">
+    <mat-toolbar color="primary" class="mat-whiteframe-z1">
+      <img src="../../../assets/icons/logo.svg" class="logo--size">
+    </mat-toolbar>
+  </div>
+  <div fxFlex="20%">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title class="card--title--font">
+          Inicio de sesión
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="login--container">
+        <form #loginForm="ngForm">
+          <div>
+            <mat-form-field>
+              <input matInput #userElement #userControl="ngModel" placeholder="userName" type="text" maxlength="30" name="username" [(ngModel)]="dataUser.userName"
+                required>
+              <span mat-prefix><mat-icon svgIcon="assets:person_input"></mat-icon></span>
+              <mat-hint align="start">
+                <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+              </mat-hint>
+            </mat-form-field>
+          </div>
+            <mat-form-field flex>
+              <input matInput #passElement #passControl="ngModel" minlength="6" placeholder="Contraseña" type="password" name="password" [(ngModel)]="dataUser.password"
+                required >
+              <span mat-prefix><mat-icon svgIcon="assets:pass_input"></mat-icon></span>
+              <mat-hint align="start">
+                <span [hidden]="!passControl.errors?.required || passControl.pristine" class="tc-red-600">Required</span>
+              </mat-hint>
+            </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button flex mat-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="login()" class="button--font">Ingresar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxFlex="20%">
+    <td-layout-footer class="footer--container">
+      <app-footer></app-footer>
+    </td-layout-footer>
+  </div>
+</div>
